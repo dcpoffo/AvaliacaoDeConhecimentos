@@ -10,8 +10,8 @@ uses
   UCadastroFornecedor in 'UCadastroFornecedor.pas' {frmCadastroFornecedores},
   UPesquisaEmpresa in 'UPesquisaEmpresa.pas' {frmPesquisaEmpresa},
   UListaFornecedores in 'UListaFornecedores.pas' {frmListaFornecedores},
-  URelatorio in 'URelatorio.pas' {frmRelatorioFornecedores};
-
+  URelatorio in 'URelatorio.pas' {frmRelatorioFornecedores},
+  UContato in 'UContato.pas' {frmContato};
 
 {$R *.res}
 
@@ -25,5 +25,6 @@ begin
   Application.CreateForm(TfrmPesquisaEmpresa, frmPesquisaEmpresa);
   Application.CreateForm(TfrmListaFornecedores, frmListaFornecedores);
   Application.CreateForm(TfrmRelatorioFornecedores, frmRelatorioFornecedores);
+  Application.CreateForm(TfrmContato, frmContato);
   Application.Run;
 end.

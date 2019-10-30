@@ -26,7 +26,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
     BevelInner = bvLowered
     TabOrder = 0
     object btSair: TBitBtn
-      Left = 408
+      Left = 1080
       Top = 12
       Width = 75
       Height = 33
@@ -91,7 +91,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         0909090909090908080808080808080808080809090909000000}
     end
     object btCancelar: TBitBtn
-      Left = 328
+      Left = 1000
       Top = 12
       Width = 75
       Height = 33
@@ -127,7 +127,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF000000}
     end
     object btSalvar: TBitBtn
-      Left = 248
+      Left = 920
       Top = 12
       Width = 75
       Height = 33
@@ -149,7 +149,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         33333333333333330000}
     end
     object btEditar: TBitBtn
-      Left = 168
+      Left = 840
       Top = 12
       Width = 75
       Height = 33
@@ -215,7 +215,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5000000}
     end
     object btApagar: TBitBtn
-      Left = 88
+      Left = 760
       Top = 12
       Width = 75
       Height = 33
@@ -271,7 +271,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         00003939393939393939393939393939393939390000}
     end
     object btNovo: TBitBtn
-      Left = 8
+      Left = 680
       Top = 12
       Width = 75
       Height = 33
@@ -726,7 +726,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
     object gbContatos: TGroupBox
       Left = 8
       Top = 204
-      Width = 308
+      Width = 337
       Height = 61
       Caption = 'Contatos'
       Font.Charset = DEFAULT_CHARSET
@@ -744,14 +744,14 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         Caption = 'Contato'
       end
       object Label11: TLabel
-        Left = 152
+        Left = 182
         Top = 16
         Width = 51
         Height = 13
         Caption = 'Telefone'
       end
       object sbSalvar: TSpeedButton
-        Left = 250
+        Left = 280
         Top = 31
         Width = 23
         Height = 22
@@ -773,7 +773,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         OnClick = sbSalvarClick
       end
       object sbCancelar: TSpeedButton
-        Left = 276
+        Left = 306
         Top = 31
         Width = 23
         Height = 22
@@ -799,7 +799,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
       object edNomeContato: TEdit
         Left = 8
         Top = 32
-        Width = 137
+        Width = 169
         Height = 21
         CharCase = ecUpperCase
         Font.Charset = DEFAULT_CHARSET
@@ -811,7 +811,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         TabOrder = 0
       end
       object edFoneContato: TMaskEdit
-        Left = 152
+        Left = 182
         Top = 32
         Width = 93
         Height = 21
@@ -886,7 +886,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
         end>
     end
     object edIdContato: TEdit
-      Left = 320
+      Left = 352
       Top = 216
       Width = 41
       Height = 21
@@ -894,7 +894,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
       Visible = False
     end
     object edIdFornecedorContato: TEdit
-      Left = 320
+      Left = 352
       Top = 240
       Width = 41
       Height = 21

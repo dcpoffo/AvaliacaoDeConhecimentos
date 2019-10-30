@@ -16,10 +16,13 @@ type
     Relatrio1: TMenuItem;
     Empresa1: TMenuItem;
     Cadastrar1: TMenuItem;
+    Contato1: TMenuItem;
+    Contato2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Cadastro2Click(Sender: TObject);
     procedure Cadastrar1Click(Sender: TObject);
     procedure Relatrio1Click(Sender: TObject);
+    procedure Contato2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,7 +35,7 @@ var
 implementation
 
 uses UDM, UCadastroEmpresa, UCadastroFornecedor, UPesquisaEmpresa,
-  UListaFornecedores, DateUtils;
+  UListaFornecedores, DateUtils, UContato;
 
 {$R *.dfm}
 
@@ -54,6 +57,11 @@ end;
 procedure TfrmPrincipal.Relatrio1Click(Sender: TObject);
 begin
       frmListaFornecedores.ShowModal;
+end;
+
+procedure TfrmPrincipal.Contato2Click(Sender: TObject);
+begin
+    frmcontato.ShowModal;
 end;
 
 end.

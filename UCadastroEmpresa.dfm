@@ -26,7 +26,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
     BevelInner = bvLowered
     TabOrder = 0
     object btSair: TBitBtn
-      Left = 408
+      Left = 572
       Top = 11
       Width = 75
       Height = 33
@@ -91,7 +91,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
         0909090909090908080808080808080808080809090909000000}
     end
     object btCancelar: TBitBtn
-      Left = 328
+      Left = 492
       Top = 11
       Width = 75
       Height = 33
@@ -127,7 +127,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
         BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF000000}
     end
     object btSalvar: TBitBtn
-      Left = 248
+      Left = 412
       Top = 11
       Width = 75
       Height = 33
@@ -149,7 +149,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
         33333333333333330000}
     end
     object btApagar: TBitBtn
-      Left = 88
+      Left = 252
       Top = 11
       Width = 75
       Height = 33
@@ -205,7 +205,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
         00003939393939393939393939393939393939390000}
     end
     object btEditar: TBitBtn
-      Left = 168
+      Left = 332
       Top = 11
       Width = 75
       Height = 33
@@ -271,7 +271,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
         B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5000000}
     end
     object btNovo: TBitBtn
-      Left = 8
+      Left = 172
       Top = 11
       Width = 75
       Height = 33
@@ -443,6 +443,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
           FieldName = 'UF'
           Title.Alignment = taCenter
           Title.Caption = 'U.F.'
+          Width = 64
           Visible = True
         end
         item
@@ -450,6 +451,7 @@ object frmCadastroEmpresa: TfrmCadastroEmpresa
           FieldName = 'NOMEFANTASIA'
           Title.Alignment = taCenter
           Title.Caption = 'NOME FANTASIA'
+          Width = 64
           Visible = True
         end>
     end

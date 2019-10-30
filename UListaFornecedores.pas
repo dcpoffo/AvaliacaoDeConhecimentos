@@ -26,6 +26,7 @@ type
     Label6: TLabel;
     btVisualizar: TBitBtn;
     btSair: TBitBtn;
+    Label7: TLabel;
     procedure btAplicarFiltroClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btLimparFiltroClick(Sender: TObject);

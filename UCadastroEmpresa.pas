@@ -82,7 +82,7 @@ begin
     begin
         Close;
         SQL.Clear;
-        SQL.Add('select * from empresa');
+        SQL.Add('select * from empresa order by codigo');
         Open;
     end;             
 end;
@@ -304,7 +304,7 @@ begin
                         dm.qFornecedores.ExecSQL;
                         MessageDlg('Cadastro alterado com sucesso!' + #13 +
                                     inttostr(dm.qFornecedores.RowsAffected) +
-                                    ' nome(s) de empresa(s) alterada(s) em Fornecedores cadastrados', mtInformation,[mbok],0);
+                                    ' nome(s) de empresa(s) alterado(s) em Cadastro de Fornecedores', mtInformation,[mbok],0);
                     end else
                     begin
                         MessageDlg('Cadastro alterado com sucesso!', mtInformation,[mbok],0);

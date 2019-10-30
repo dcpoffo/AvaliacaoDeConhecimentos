@@ -1,6 +1,6 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 356
-  Top = 37
+  Left = 384
+  Top = 144
   Align = alClient
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -44,6 +44,13 @@ object frmPrincipal: TfrmPrincipal
       object Cadastrar1: TMenuItem
         Caption = 'Cadastrar'
         OnClick = Cadastrar1Click
+      end
+    end
+    object Contato1: TMenuItem
+      Caption = 'Outros'
+      object Contato2: TMenuItem
+        Caption = 'Contato'
+        OnClick = Contato2Click
       end
     end
   end

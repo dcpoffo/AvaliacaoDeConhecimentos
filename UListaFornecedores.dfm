@@ -85,7 +85,7 @@ object frmListaFornecedores: TfrmListaFornecedores
     object btAplicarFiltro: TBitBtn
       Left = 8
       Top = 130
-      Width = 113
+      Width = 121
       Height = 33
       Caption = 'Aplicar Filtros'
       Font.Charset = DEFAULT_CHARSET
@@ -110,9 +110,9 @@ object frmListaFornecedores: TfrmListaFornecedores
         EEEEE6680000888888888888888888880000}
     end
     object btLimparFiltro: TBitBtn
-      Left = 128
+      Left = 136
       Top = 130
-      Width = 113
+      Width = 121
       Height = 33
       Caption = 'Limpar Filtros'
       Font.Charset = DEFAULT_CHARSET
@@ -148,7 +148,7 @@ object frmListaFornecedores: TfrmListaFornecedores
       Left = 510
       Top = 4
       Width = 656
-      Height = 79
+      Height = 101
       Caption = 'Observa'#231#245'es'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
@@ -183,6 +183,13 @@ object frmListaFornecedores: TfrmListaFornecedores
         Width = 325
         Height = 13
         Caption = '- Informar a Data de Cadastro completa, ex.: 18/10/1980'
+      end
+      object Label7: TLabel
+        Left = 6
+        Top = 79
+        Width = 361
+        Height = 13
+        Caption = '- Deixando os campos em branco, busca todos os fornecedores'
       end
     end
   end

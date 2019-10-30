@@ -98,9 +98,29 @@ procedure TfrmCadastroFornecedores.AtualizaContato;
 begin
     dm.qContatos.Close;
     dm.qContatos.SQL.Clear;
-    dm.qContatos.SQL.Add('select * from contato where idfornecedor = '+ dm.qFornecedores.FieldByName('id').AsString +'');
-    //dm.qContatos.SQL.Add('select * from contato where idfornecedor = '+ edID.Text +'');
+    if novo then
+        dm.qContatos.SQL.Add('select * from contato where idfornecedor = '+ edID.Text +'')
+    else
+        dm.qContatos.SQL.Add('select * from contato where idfornecedor = '+ dm.qFornecedores.FieldByName('id').AsString +'');
+
     dm.qContatos.Open;
+    //novo:= false;
+
+    if editar then
+    begin
+        // verifica se há contatos cadastrados, habilitando/desabilitando botões necessários
+        if dm.qContatos.RecordCount = 0 then
+        begin
+            sbExcluir.Enabled:= false;
+            sbEditar.Enabled:= false;
+        end else
+        begin
+            sbExcluir.Enabled:= true;
+            sbEditar.Enabled:= true;
+        end;
+        sbCancelar.Enabled:= true;
+        sbSalvar.Enabled:= true;
+    end;
 end;
 
 // verifica se maior/menor de 18 anos
@@ -265,8 +285,7 @@ begin
         btApagar.Enabled:= true;
         btEditar.Enabled:= true;
     end;
-    //btApagar.Enabled:= false;
-    //btEditar.Enabled:= false;
+
     btNovo.Enabled:= true;
     btCancelar.Enabled:= false;
     btSalvar.Enabled:= false;
@@ -279,6 +298,7 @@ end;
 
 procedure TfrmCadastroFornecedores.btCancelarClick(Sender: TObject);
 begin
+    novo:= true;
     DBGrid1.Enabled:= true;
     //clica no botao cancelar contato
     sbCancelar.Click;
@@ -314,7 +334,7 @@ begin
 
     LimpaTela;
     DesabilitaCampos;
-    novo:= true;
+    //novo:= true;
 
     //altera a cor de alguns campos que nao podem ser editados
     cbTipo.Color:= clWindow;
@@ -324,6 +344,7 @@ end;
 
 procedure TfrmCadastroFornecedores.btNovoClick(Sender: TObject);
 begin
+    novo:= true;    // novo cadastro de fornecedor
     HabilitaCampos;
     sbEditar.Enabled:= false;
     sbExcluir.Enabled:= false;
@@ -354,7 +375,7 @@ begin
     edData.Text:= Datetostr(date);
     //hora padrao do sistema
     edHora.Text:= Timetostr(time);
-    novo:= true;    // novo cadastro de fornecedor
+
     dm.qContatos.Close;
     DBGrid1.Enabled:= False;
 
@@ -510,14 +531,28 @@ begin
         Close;
         SQL.Clear;
 
-        SQL.Add('select * from fornecedor where (documento = '''+ edNumeroDocumento.Text + ''' or RG = '''+ edRG.Text +''') and id <> ' + edID.Text + '');
-        Open;
-        if dm.qPesquisaFornecedor.RecordCount = 1 then
+        if cbTipo.Text = 'PESSOA FÍSICA' then
         begin
-            showmessage('O número ' + edNumeroDocumento.Text + ' ou o R.G ''' + edRG.Text+ ''' já está cadastrado');
-            edNumeroDocumento.EditMask:= '';
-            edNumeroDocumento.SetFocus;
-            exit;
+            SQL.Add('select * from fornecedor where (documento = '''+ edNumeroDocumento.Text + ''' or RG = '''+ edRG.Text +''') and id <> ' + edID.Text + '');
+            Open;
+            if dm.qPesquisaFornecedor.RecordCount = 1 then
+            begin
+                MessageDlg('O C.P.F. / C.N.P.J. ' + edNumeroDocumento.Text + ' ou o R.G ' + edRG.Text+ ' já está cadastrado', mtError,[mbok],0);
+                edNumeroDocumento.EditMask:= '';
+                edNumeroDocumento.SetFocus;
+                exit;
+            end;
+        end else
+        begin
+            SQL.Add('select * from fornecedor where (documento = '''+ edNumeroDocumento.Text + ''') and id <> ' + edID.Text + '');
+            Open;
+            if dm.qPesquisaFornecedor.RecordCount = 1 then
+            begin
+                MessageDlg('O C.N.P.J. ' + edNumeroDocumento.Text + ' já está cadastrado', mtError,[mbok],0);
+                edNumeroDocumento.EditMask:= '';
+                edNumeroDocumento.SetFocus;
+                exit;
+            end;
         end;
     end;
     ////
@@ -688,6 +723,8 @@ begin
         sbEditar.Enabled:= true;
         sbExcluir.Enabled:= true;
     end;
+    sbSalvar.Enabled:= true;
+    sbCancelar.Enabled:= true;
 
     //simula o click no combox tipo de pessoa, para pegar a posicao do item
     cbTipo.DroppedDown:= true;
@@ -754,6 +791,7 @@ begin
     edFoneContato.Clear;
     edNomeContato.SetFocus;
     editar:= false;
+    AtualizaContato;
 end;
 
 procedure TfrmCadastroFornecedores.sbSalvarClick(Sender: TObject);
@@ -817,14 +855,23 @@ begin
     edNomeContato.SetFocus;
 
     //atualiza tabela de contatos para o fornecedor apontado
-    //AtualizaContato;
-
     dm.qContatos.Close;
     dm.qContatos.SQL.Clear;
     dm.qContatos.SQL.Add('select * from contato where idfornecedor = '+ edID.Text +'');
     dm.qContatos.Open;
 
-
+    // verifica se há contatos cadastrados, habilitando/desabilitando botões necessários
+    if dm.qContatos.RecordCount = 0 then
+    begin
+        sbExcluir.Enabled:= false;
+        sbEditar.Enabled:= false;
+    end else
+    begin
+        sbExcluir.Enabled:= true;
+        sbEditar.Enabled:= true;
+    end;
+    sbCancelar.Enabled:= true;
+    sbSalvar.Enabled:= true;
 end;
 
 procedure TfrmCadastroFornecedores.sbExcluirClick(Sender: TObject);
@@ -854,11 +901,14 @@ begin
     edNomeContato.Text:= dm.qContatos.FieldByname('contato').AsString;
     edFoneContato.Text:= dm.qContatos.FieldByName('telefone').AsString;
     edIdContato.Text:= IntToStr(dm.qContatos.FieldByName('id').AsInteger);
-    edIdFornecedorContato.Text:= IntToStr(dm.qContatos.FieldByName('idfornecedor').AsInteger)
+    edIdFornecedorContato.Text:= IntToStr(dm.qContatos.FieldByName('idfornecedor').AsInteger);
+    sbEditar.Enabled:= false;
+    sbExcluir.Enabled:= false;
 end;
 
 procedure TfrmCadastroFornecedores.DBGrid1CellClick(Column: TColumn);
 begin
+    novo:= false;
     //atualiza tabela de contatos para o fornecedor apontado
     AtualizaContato;
 end;
