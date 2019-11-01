@@ -69,6 +69,7 @@ type
     procedure sbExcluirClick(Sender: TObject);
     procedure sbEditarClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
+    procedure edNumeroDocumentoKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -911,6 +912,13 @@ begin
     novo:= false;
     //atualiza tabela de contatos para o fornecedor apontado
     AtualizaContato;
+end;
+
+procedure TfrmCadastroFornecedores.edNumeroDocumentoKeyPress(
+  Sender: TObject; var Key: Char);
+begin
+    if ((Key in ['0'..'9','-','.','/'] = False) and (Word(Key) <> VK_BACK)) then
+        Key := #0;
 end;
 
 end.

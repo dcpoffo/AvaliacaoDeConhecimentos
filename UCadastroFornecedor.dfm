@@ -713,6 +713,7 @@ object frmCadastroFornecedores: TfrmCadastroFornecedores
       Width = 120
       Height = 21
       TabOrder = 7
+      OnKeyPress = edNumeroDocumentoKeyPress
     end
     object edDataNascimento: TDateTimePicker
       Left = 225
